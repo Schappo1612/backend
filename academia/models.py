@@ -26,7 +26,8 @@ class Produtos(models.Model):
     categoria = models.ForeignKey(
         Categoria, on_delete=models.PROTECT, related_name="produtos"
     )
-    Fornecedor = models.ForeignKey(Fornecedor, on_delete=models.PROTECT, related_name="produtos")
+    Fornecedor = models.ManyToManyField(Fornecedor, related_name="produtos")
+    
 
 
     def __str__(self):
