@@ -2,16 +2,6 @@ from rest_framework.serializers import ModelSerializer
 
 from academia.models import Categoria, Fornecedor, Produtos
 
-class CategoriaSerializer(ModelSerializer):
-    class Meta:
-        model = Categoria
-        fields = "__all__"
-
-class FornecedorSerializer(ModelSerializer):
-    class Meta:
-        model = Fornecedor
-        fields = "__all__"
-
 class ProdutoSerializer(ModelSerializer):
     class Meta:
         model = Produtos
@@ -39,4 +29,3 @@ class ProdutoListSerializer(ModelSerializer):
     class Meta:
         model = Produtos
         fields = ["id", "titulo", "preco"]
-
