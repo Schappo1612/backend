@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'uploader',
     'usuario',
+    'drf_spectacular',
     'academia'
 ]
 
@@ -52,6 +53,16 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Academia API",
+    "DESCRIPTION": "API para gerenciamento da academia, incluindo endpoints e documentação.",
+    "VERSION": "1.0.0",
+}
 
 ROOT_URLCONF = 'config.urls'
 
