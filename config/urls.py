@@ -10,12 +10,13 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
 )
 
-from academia.views import ( CategoriaViewSet, FornecedorViewSet )
+from academia.views import ( CategoriaViewSet, FornecedorViewSet, ProdutosViewSet )
 from uploader.router import router as uploader_router
 
 router = DefaultRouter()
 router.register(r"categorias", CategoriaViewSet),
 router.register(r"fornecedores", FornecedorViewSet),
+router.register(r"produtos", ProdutosViewSet),
 
 urlpatterns = [
     path("admin/", admin.site.urls),
