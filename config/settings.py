@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'uploader',
     'usuario',
     'drf_spectacular',
-    'academia'
+    'academia',
+    'django_extensions',
 
 ]
 
@@ -141,7 +142,7 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "usuario.Usuario"
 
-MEDIA_URL = "http://191.52.55.83:19003/media/"
+MEDIA_URL = "http://191.52.55.252:19003/media/"
 MEDIA_ENDPOINT = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 FILE_UPLOAD_PERMISSIONS = 0o640
