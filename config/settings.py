@@ -17,6 +17,10 @@ CSRF_TRUSTED_ORIGINS = [
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+MEDIA_ENDPOINT = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+FILE_UPLOAD_PERMISSIONS = 0o640
+CORS_ALLOW_ALL_ORIGINS = True
 STATIC_URL = "/static/"
 
 if MODE in ["PRODUCTION", "MIGRATE"]:
@@ -29,26 +33,8 @@ else:
     MY_IP = os.getenv("MY_IP", "127.0.0.1")
     MEDIA_URL = f"http://{MY_IP}:19003/media/"
 
-MEDIA_URL = "/media/"
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "usuario.Usuario"
-
-MEDIA_URL = "http://191.52.55.83:19003/media/"
-MEDIA_ENDPOINT = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
-FILE_UPLOAD_PERMISSIONS = 0o640
-CORS_ALLOW_ALL_ORIGINS = True
-
-if MODE in ["PRODUCTION", "MIGRATE"]:
-    MEDIA_URL = "/media/"
-else:
-    MY_IP = os.getenv("MY_IP", "127.0.0.1")
-    MEDIA_URL = f"http://{MY_IP}:19003/media/"
-
-if MODE == "PRODUCTION":
-    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -129,7 +115,6 @@ else:
         }
     }
 
-print(MODE, DATABASES)
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -148,7 +133,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "pt-br"
 TIME_ZONE = "America/Sao_Paulo"
-
 USE_I18N = True
-
 USE_TZ = True
+
+print(MODE, MEDIA_URL, DATABASES)
