@@ -1,6 +1,8 @@
 import os
 from dotenv import load_dotenv
 
+from pathlib import Path
+
 load_dotenv()
 
 MODE = os.getenv("MODE")
@@ -13,6 +15,7 @@ CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://localhost:8000", "https
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+from pathlib import Path
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -148,8 +151,6 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 MEDIA_URL = "/media/"
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "usuario.Usuario"
@@ -165,7 +166,6 @@ if MODE in ["PRODUCTION", "MIGRATE"]:
 else:    
     MY_IP = os.getenv("MY_IP", "127.0.0.1")
     MEDIA_URL = f"http://{MY_IP}:19003/media/"
-from pathlib import Path
 
 if MODE == "PRODUCTION":
     STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
