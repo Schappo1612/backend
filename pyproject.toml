@@ -2,11 +2,9 @@
 name = ""
 version = ""
 description = ""
-authors = [
-    {name = "Schappo1612", email = "gustavoschappo1612@gmail.com"},
-]
+authors = [{ name = "Schappo1612", email = "gustavoschappo1612@gmail.com" }]
 dependencies = [
-    "django>=4.2.5",
+    "django>=4.2.6",
     "djangorestframework>=3.14.0",
     "setuptools>=68.1.2",
     "python-magic>=0.4.27",
@@ -16,15 +14,21 @@ dependencies = [
     "django-cloudinary-storage>=0.3.0",
     "django-extensions>=3.2.3",
     "pydotplus>=2.0.2",
+    "python-dotenv>=1.0.0",
+    "netifaces>=0.11.0",
+    "gunicorn>=21.2.0",
+    "whitenoise[brotli]>=6.5.0",
+    "psycopg2-binary>=2.9.9",
 ]
 requires-python = ">=3.10"
 readme = "README.md"
-license = {text = "MIT"}
+license = { text = "MIT" }
 
 
 [[tool.pdm.autoexport]]
 filename = "requirements.txt"
 without-hashes = "true"
 
-
-
+[tool.pdm.scripts]
+pre_dev = "python ./scripts/set_my_ip.py"
+dev = "python manage.py runserver 0.0.0.0:19003"
