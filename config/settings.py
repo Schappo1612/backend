@@ -31,7 +31,8 @@ if MODE in ["PRODUCTION", "MIGRATE"]:
     MEDIA_URL = "/media/"
 else:
     MY_IP = os.getenv("MY_IP", "127.0.0.1")
-    MEDIA_URL = f"http://{MY_IP}:19003/media/"
+    # MEDIA_URL = f"http://{MY_IP}:19003/media/"
+    MEDIA_URL = "http://localhost:8000/media/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "usuario.Usuario"
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     "cloudinary_storage",
     "cloudinary",
     "rest_framework",
+    "rest_framework_simplejwt",
     "corsheaders",
     "uploader",
     "usuario",
@@ -67,6 +69,9 @@ MIDDLEWARE = [
 ]
 
 REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 

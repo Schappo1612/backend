@@ -10,13 +10,21 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
 )
 
-from academia.views import ( CategoriaViewSet, FornecedorViewSet, ProdutosViewSet )
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
+from academia.views import ( CategoriaViewSet, FornecedorViewSet, ProdutosViewSet, CompraViewSet )
 from uploader.router import router as uploader_router
+
+
 
 router = DefaultRouter()
 router.register(r"categorias", CategoriaViewSet),
 router.register(r"fornecedores", FornecedorViewSet),
 router.register(r"produtos", ProdutosViewSet),
+router.register(r"compras", CompraViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -35,6 +43,8 @@ urlpatterns = [
         name="redoc",
     ),
     path("api/", include(router.urls)),
+    path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
 ]
 
 urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT)
